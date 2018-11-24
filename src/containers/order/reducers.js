@@ -1,32 +1,55 @@
 import { combineReducers } from 'redux';
-import { FETCH_PIZZA_FLAVORS, FETCH_PIZZA_SIZES, SELECT_PIZZA_FLAVOR } from './actionsTypes';
+import {
+  FETCH_FLAVORS, FETCH_SIZES, SELECT_FLAVOR, SELECT_SIZE, FETCH_CURRENT_ORDER, SAVE_ORDER
+} from './actionsTypes';
 
-function pizzaFlavorsReducer(state = [], action = {}) {
-  if(action.type === FETCH_PIZZA_FLAVORS) {
+function flavorsReducer(state = [], action = {}) {
+  if(action.type === FETCH_FLAVORS) {
     return action.payload;
   }
 
   return state;
 }
 
-function pizzaSizesReducer(state = [], action = {}) {
-  if(action.type === FETCH_PIZZA_SIZES) {
+function sizesReducer(state = [], action = {}) {
+  if(action.type === FETCH_SIZES) {
     return action.payload;
   }
 
   return state;
 }
 
-function selectPizzaFlavorReducer(state = {}, action = {}) {
-  if(action.type === SELECT_PIZZA_FLAVOR) {
+function selectFlavorReducer(state = {}, action = {}) {
+  if(action.type === SELECT_FLAVOR) {
     return action.payload;
   }
 
   return state;
+}
+
+function selectSizeReducer(state = {}, action = {}) {
+  if(action.type === SELECT_SIZE) {
+    return action.payload;
+  }
+
+  return state;
+}
+
+function currentOrderReducer(state = {}, action = {}) {
+  switch(action.type) {
+    case FETCH_CURRENT_ORDER:
+      return action.payload;
+    case SAVE_ORDER:
+      return action.payload;
+    default:
+      return state;
+  }
 }
 
 export default combineReducers({
-  pizzaFlavors: pizzaFlavorsReducer,
-  pizzaSizes: pizzaSizesReducer,
-  selectPizzaFlavor: selectPizzaFlavorReducer
+  flavors: flavorsReducer,
+  sizes: sizesReducer,
+  selectedFlavor: selectFlavorReducer,
+  selectedSize: selectSizeReducer,
+  currentOrder: currentOrderReducer
 });

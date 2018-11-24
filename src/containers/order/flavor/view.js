@@ -1,25 +1,25 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import i18next from 'i18next';
+import { withRouter } from 'react-router-dom';
 import {
   ListGroup, ListGroupItem, Card, CardBody, CardTitle
 } from 'reactstrap';
-import { getPizzaFlavors, selectPizzaFlavor } from '../actions';
-import BaseLayout from '../../shared/baseLayout/view';
-import './styles.css';
+import { fetchFlavors, selectFlavor } from '../actions';
+import '../styles.css';
 
-class Order extends PureComponent {
+class View extends Component {
   componentDidMount() {
-    this.props.getPizzaFlavors(); // eslint-disable-line
+    this.props.fetchFlavors();
   }
 
   onSelect = flavor => () => {
-    this.props.selectPizzaFlavor(flavor); // eslint-disable-line
+    this.props.selectFlavor(flavor);
+    this.props.history.push('order/size');
   }
 
   renderItems() {
-    // eslint-disable-next-line
-    return this.props.pizzaFlavors.map(flavor => (
+    return this.props.flavors.map(flavor => (
       <ListGroupItem
         key={flavor.id}
         onClick={this.onSelect(flavor)}
@@ -32,20 +32,20 @@ class Order extends PureComponent {
 
   render() {
     return (
-      <BaseLayout>
-        <Card>
-          <CardBody>
-            <CardTitle>{i18next.t('order.flavor.title')}</CardTitle>
-            <ListGroup>{this.renderItems()}</ListGroup>
-          </CardBody>
-        </Card>
-      </BaseLayout>
+      <Card>
+        <CardBody>
+          <CardTitle>{i18next.t('order.flavor.title')}</CardTitle>
+          <ListGroup>{this.renderItems()}</ListGroup>
+        </CardBody>
+      </Card>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  pizzaFlavors: state.order.pizzaFlavors
+  flavors: state.order.flavors
 });
 
-export default connect(mapStateToProps, { getPizzaFlavors, selectPizzaFlavor })(Order);
+export default withRouter(
+  connect(mapStateToProps, { fetchFlavors, selectFlavor })(View)
+);

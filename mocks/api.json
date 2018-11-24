@@ -1,12 +1,52 @@
 {
-  "pizza-sizes": [
-    {"id": 0,"name": "small", "cookTime": 15, "price": 20.00},
-    {"id": 1,"name": "medium", "cookTime": 20, "price": 30.00},
-    {"id": 2,"name": "big", "cookTime": 25, "price": 40.00}
+  "sizes": [
+    {
+      "id": 0,
+      "name": "Pequena",
+      "cookTime": 15,
+      "price": 20
+    },
+    {
+      "id": 1,
+      "name": "Média",
+      "cookTime": 20,
+      "price": 30
+    },
+    {
+      "id": 2,
+      "name": "Grande",
+      "cookTime": 25,
+      "price": 40
+    }
   ],
-  "pizza-flavors": [
-    {"id": 0,"name": "Calabresa", "additionalCookTime": 0},
-    {"id": 1,"name": "Marguerita", "additionalCookTime": 0},
-    {"id": 2,"name": "Portuguesa", "additionalCookTime": 5}
-  ]
+  "flavors": [
+    {
+      "id": 0,
+      "name": "Calabresa",
+      "additionalCookTime": 0
+    },
+    {
+      "id": 1,
+      "name": "Marguerita",
+      "additionalCookTime": 0
+    },
+    {
+      "id": 2,
+      "name": "Portuguesa",
+      "additionalCookTime": 5
+    }
+  ],
+  "currentOrder": {
+    "selectedFlavor": {
+      "id": 0,
+      "name": "Calabresa",
+      "additionalCookTime": 0
+    },
+    "selectedSize": {
+      "id": 0,
+      "name": "Pequena",
+      "cookTime": 15,
+      "price": 20
+    }
+  }
 }

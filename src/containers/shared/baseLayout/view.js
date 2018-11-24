@@ -1,20 +1,17 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { Navbar, NavbarBrand } from 'reactstrap';
 import i18next from 'i18next';
+import Routes from '../../../configs/routes';
 import 'bootstrap/dist/css/bootstrap.css';
 
-class BaseLayout extends PureComponent {
-  render() {
-    return (
-      <div>
-        <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">{i18next.t('shared.applicationName')}</NavbarBrand>
-        </Navbar>
+const BaseLayout = () => (
+  <div>
+    <Navbar color="light" light expand="md">
+      <NavbarBrand href="/">{i18next.t('shared.applicationName')}</NavbarBrand>
+    </Navbar>
 
-        {this.props.children /* eslint-disable-line */}
-      </div>
-    );
-  }
-}
+    <Routes />
+  </div>
+);
 
 export default BaseLayout;
