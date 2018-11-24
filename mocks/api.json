@@ -1,5 +1,12 @@
 {
-  "pizzas": [
-
+  "pizza-sizes": [
+    {"id": 0,"name": "small", "cookTime": 15, "price": 20.00},
+    {"id": 1,"name": "medium", "cookTime": 20, "price": 30.00},
+    {"id": 2,"name": "big", "cookTime": 25, "price": 40.00}
+  ],
+  "pizza-flavors": [
+    {"id": 0,"name": "Calabresa", "additionalCookTime": 0},
+    {"id": 1,"name": "Marguerita", "additionalCookTime": 0},
+    {"id": 2,"name": "Portuguesa", "additionalCookTime": 5}
   ]
 }
