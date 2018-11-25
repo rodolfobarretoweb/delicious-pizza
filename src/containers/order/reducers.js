@@ -1,6 +1,11 @@
 import { combineReducers } from 'redux';
 import {
-  FETCH_FLAVORS, FETCH_SIZES, SELECT_FLAVOR, SELECT_SIZE, FETCH_CURRENT_ORDER, SAVE_ORDER
+  FETCH_FLAVORS,
+  FETCH_SIZES,
+  FETCH_INCREMENTS,
+  SELECT_FLAVOR,
+  SELECT_SIZE,
+  SELECT_INCREMENTS
 } from './actionsTypes';
 
 function flavorsReducer(state = [], action = {}) {
@@ -13,6 +18,14 @@ function flavorsReducer(state = [], action = {}) {
 
 function sizesReducer(state = [], action = {}) {
   if(action.type === FETCH_SIZES) {
+    return action.payload;
+  }
+
+  return state;
+}
+
+function incrementsReducer(state = [], action = {}) {
+  if(action.type === FETCH_INCREMENTS) {
     return action.payload;
   }
 
@@ -35,21 +48,19 @@ function selectSizeReducer(state = {}, action = {}) {
   return state;
 }
 
-function currentOrderReducer(state = {}, action = {}) {
-  switch(action.type) {
-    case FETCH_CURRENT_ORDER:
-      return action.payload;
-    case SAVE_ORDER:
-      return action.payload;
-    default:
-      return state;
+function selectIncrementsReducer(state = {}, action = {}) {
+  if(action.type === SELECT_INCREMENTS) {
+    return action.payload;
   }
+
+  return state;
 }
 
 export default combineReducers({
   flavors: flavorsReducer,
   sizes: sizesReducer,
+  increments: incrementsReducer,
   selectedFlavor: selectFlavorReducer,
   selectedSize: selectSizeReducer,
-  currentOrder: currentOrderReducer
+  selectedIncrements: selectIncrementsReducer
 });

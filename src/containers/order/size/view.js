@@ -12,22 +12,18 @@ import {
   CardTitle,
   Alert
 } from 'reactstrap';
-import { fetchSizes, selectSize, saveOrder } from '../actions';
+import { fetchSizes, selectSize } from '../actions';
 import { formatCurrency } from '../../../utils/currency';
 import '../styles.css';
 
 class View extends PureComponent {
   componentDidMount() {
-    if(Object.values(this.props.selectedFlavor).length === 0) {
-      this.props.history.push('/');
-    }
-
     this.props.fetchSizes();
   }
 
   onSelect = size => () => {
     this.props.selectSize(size);
-    this.props.saveOrder();
+    this.props.history.push('/order/increment');
   }
 
   renderItems() {
@@ -71,5 +67,5 @@ const mapStateToProps = state => ({
 });
 
 export default withRouter(
-  connect(mapStateToProps, { fetchSizes, selectSize, saveOrder })(View)
+  connect(mapStateToProps, { fetchSizes, selectSize })(View)
 );

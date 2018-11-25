@@ -2,7 +2,7 @@ import { get } from 'lodash';
 import configureStore from '../../configs/store';
 
 import {
-  fetchFlavors, fetchSizes, selectFlavor, selectSize, saveOrder, fetchOrder
+  fetchFlavors, fetchSizes, selectFlavor, selectSize, fetchIncrements, selectIncrements
 } from './actions';
 
 const store = configureStore();
@@ -23,6 +23,14 @@ it('check if pizza sizes resolves correctly', async () => {
   expect(Object.keys(firstSize)).toEqual(['id', 'name', 'cookTime', 'price']);
 });
 
+it('check if pizza increments resolves correctly', async () => {
+  const increments = await store.dispatch(fetchIncrements());
+  expect(increments.length).toBeGreaterThanOrEqual(1);
+
+  const firstIncrement = get(increments, '[0]', {});
+  expect(Object.keys(firstIncrement)).toEqual(['id', 'name', 'additionalPrice', 'additionalCookTime']);
+});
+
 it('select pizza flavor', async () => {
   const flavors = await store.dispatch(fetchFlavors());
   const firstFlavor = get(flavors, '[0]', {});
@@ -39,18 +47,10 @@ it('select pizza size', async () => {
   expect(store.getState().order.selectedSize).toEqual(firstSize);
 });
 
-it('check if save order running correctly', async () => {
-  const response = await store.dispatch(saveOrder());
-  const { order } = store.getState();
+it('select pizza increment', async () => {
+  const increments = await store.dispatch(fetchIncrements());
+  const firstIncrement = get(increments, '[0]', {});
 
-  expect(response).toMatchObject(order.currentOrder);
-});
-
-it('get current order data', async () => {
-  const response = await store.dispatch(fetchOrder());
-  const { order } = store.getState();
-
-  expect(response).toMatchObject({
-    selectedFlavor: order.selectedFlavor, selectedSize: order.selectedSize
-  });
+  store.dispatch(selectIncrements(firstIncrement));
+  expect(store.getState().order.selectedIncrements).toEqual(firstIncrement);
 });
