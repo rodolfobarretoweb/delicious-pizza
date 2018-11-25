@@ -1,7 +1,6 @@
 export default {
   flavor: {
-    title: 'Escolha o sabor da sua pizza',
-    selectedSize: 'Tamanho escolhido: {{value}}'
+    title: 'Escolha o sabor da sua pizza'
   },
 
   size: {
@@ -22,5 +21,12 @@ export default {
     incrementItem: '{{name}} - {{price}}',
     totalTime: 'Tempo de preparo: {{value}} minutos',
     totalPrice: 'Valor total: {{value}}'
+  },
+
+  shared: {
+    selectedItems: {
+      selectedSize: 'Tamanho escolhido: {{value}}',
+      selectedFlavor: 'Sabor escolhido: {{value}}'
+    }
   }
 };

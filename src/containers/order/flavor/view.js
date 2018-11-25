@@ -2,15 +2,21 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import i18next from 'i18next';
 import { withRouter } from 'react-router-dom';
+import { size } from 'lodash';
 import {
-  ListGroup, Card, CardBody, CardTitle, Alert
+  ListGroup, Card, CardBody, CardTitle
 } from 'reactstrap';
 import Item from './item';
 import { fetchFlavors, selectFlavor } from '../actions';
+import SelectedItems from '../shared/selectedItems';
 import '../styles.css';
 
 class View extends Component {
   componentDidMount() {
+    if(size(this.props.selectedSize) === 0) {
+      this.props.history.push('/');
+    }
+
     this.props.fetchFlavors();
   }
 
@@ -30,14 +36,10 @@ class View extends Component {
   }
 
   render() {
-    const { selectedSize } = this.props;
-
     return (
       <Card>
         <CardBody>
-          <Alert color="dark">
-            {i18next.t('order.flavor.selectedSize', { value: selectedSize.name })}
-          </Alert>
+          <SelectedItems />
 
           <CardTitle>{i18next.t('order.flavor.title')}</CardTitle>
           <ListGroup>{this.renderItems()}</ListGroup>

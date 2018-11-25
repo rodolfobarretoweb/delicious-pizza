@@ -1,16 +1,24 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import i18next from 'i18next';
+import { size } from 'lodash';
 import { withRouter } from 'react-router-dom';
 import { Formik, FieldArray } from 'formik';
 import {
   Card, CardBody, CardTitle, Form, Button
 } from 'reactstrap';
 import { fetchIncrements, selectIncrements } from '../actions';
+import SelectedItems from '../shared/selectedItems';
 import Item from './item';
 
 class View extends PureComponent {
   componentDidMount() {
+    const { selectedSize, selectedFlavor } = this.props;
+
+    if(size(selectedSize) === 0 || size(selectedFlavor) === 0) {
+      this.props.history.push('/');
+    }
+
     this.props.fetchIncrements();
   }
 
@@ -52,6 +60,8 @@ class View extends PureComponent {
     return (
       <Card>
         <CardBody>
+          <SelectedItems />
+
           <CardTitle>{i18next.t('order.increment.title')}</CardTitle>
           <Formik
             initialValues={{ choices: [] }}
@@ -65,7 +75,9 @@ class View extends PureComponent {
 }
 
 const mapStateToProps = state => ({
-  increments: state.order.increments
+  increments: state.order.increments,
+  selectedSize: state.order.selectedSize,
+  selectedFlavor: state.order.selectedFlavor
 });
 
 export default withRouter(
