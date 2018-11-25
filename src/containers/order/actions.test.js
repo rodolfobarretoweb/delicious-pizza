@@ -2,7 +2,14 @@ import { get } from 'lodash';
 import configureStore from '../../configs/store';
 
 import {
-  fetchFlavors, fetchSizes, selectFlavor, selectSize, fetchIncrements, selectIncrements
+  fetchFlavors,
+  fetchSizes,
+  selectFlavor,
+  selectSize,
+  fetchIncrements,
+  selectIncrements,
+  getTotalPrice,
+  getTotalTime
 } from './actions';
 
 const store = configureStore();
@@ -53,4 +60,46 @@ it('select pizza increment', async () => {
 
   store.dispatch(selectIncrements(firstIncrement));
   expect(store.getState().order.selectedIncrements).toEqual(firstIncrement);
+});
+
+describe('check total time and price response', () => {
+  const data = {
+    size: {
+      id: 0,
+      name: 'Pequena',
+      cookTime: 15,
+      price: 20
+    },
+
+    flavor: {
+      id: 0,
+      name: 'Calabresa',
+      additionalCookTime: 0
+    },
+
+    increments: [
+      {
+        id: 0,
+        name: 'Extra bacon',
+        additionalPrice: 3,
+        additionalCookTime: 0
+      }
+    ]
+  };
+
+  it('with valid values', () => {
+    expect(getTotalPrice(data.size, data.increments)).toBe(23);
+    expect(getTotalTime(data.size, data.flavor, data.increments)).toBe(15);
+  });
+
+  it('with undefined values', () => {
+    data.size.price = undefined;
+    data.size.cookTime = undefined;
+    data.flavor.additionalCookTime = undefined;
+    data.increments[0].additionalPrice = undefined;
+    data.increments[0].additionalCookTime = undefined;
+
+    expect(getTotalPrice(data.size, data.increments)).toBe(0);
+    expect(getTotalTime(data.size, data.flavor, data.increments)).toBe(0);
+  });
 });
