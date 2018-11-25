@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import i18next from 'i18next';
 import { withRouter } from 'react-router-dom';
 import {
-  ListGroup, ListGroupItem, Card, CardBody, CardTitle, Alert
+  ListGroup, Card, CardBody, CardTitle, Alert
 } from 'reactstrap';
+import Item from './item';
 import { fetchFlavors, selectFlavor } from '../actions';
 import '../styles.css';
 
@@ -20,13 +21,11 @@ class View extends Component {
 
   renderItems() {
     return this.props.flavors.map(flavor => (
-      <ListGroupItem
+      <Item
         key={flavor.id}
-        onClick={this.onSelect(flavor)}
-        className="listItem"
-      >
-        {flavor.name}
-      </ListGroupItem>
+        flavor={flavor}
+        onSelect={this.onSelect(flavor)}
+      />
     ));
   }
 

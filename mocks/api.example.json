@@ -55,5 +55,6 @@
       "additionalPrice": 5,
       "additionalCookTime": 5
     }
-  ]
+  ],
+  "currentOrder": {}
 }

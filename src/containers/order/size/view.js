@@ -3,16 +3,10 @@ import { connect } from 'react-redux';
 import i18next from 'i18next';
 import { withRouter } from 'react-router-dom';
 import {
-  ListGroup,
-  ListGroupItem,
-  ListGroupItemHeading,
-  ListGroupItemText,
-  Card,
-  CardBody,
-  CardTitle
+  ListGroup, Card, CardBody, CardTitle
 } from 'reactstrap';
+import Item from './item';
 import { fetchSizes, selectSize } from '../actions';
-import { formatCurrency } from '../../../utils/currency';
 import '../styles.css';
 
 class View extends PureComponent {
@@ -27,18 +21,11 @@ class View extends PureComponent {
 
   renderItems() {
     return this.props.sizes.map(size => (
-      <ListGroupItem
+      <Item
         key={size.id}
-        onClick={this.onSelect(size)}
-        className="listItem"
-      >
-        <ListGroupItemHeading>{size.name}</ListGroupItemHeading>
-        <ListGroupItemText>{i18next.t('order.size.cookTime', { value: size.cookTime })}</ListGroupItemText>
-
-        <ListGroupItemText className="listItemPrice">
-          {i18next.t('order.size.price', { value: formatCurrency({ value: size.price }) })}
-        </ListGroupItemText>
-      </ListGroupItem>
+        onSelect={this.onSelect(size)}
+        size={size}
+      />
     ));
   }
 
