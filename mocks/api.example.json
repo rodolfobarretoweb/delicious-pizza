@@ -1,0 +1,60 @@
+{
+  "sizes": [
+    {
+      "id": 0,
+      "name": "Pequena",
+      "cookTime": 15,
+      "price": 20
+    },
+    {
+      "id": 1,
+      "name": "Média",
+      "cookTime": 20,
+      "price": 30
+    },
+    {
+      "id": 2,
+      "name": "Grande",
+      "cookTime": 25,
+      "price": 40
+    }
+  ],
+  "flavors": [
+    {
+      "id": 0,
+      "name": "Calabresa",
+      "additionalCookTime": 0
+    },
+    {
+      "id": 1,
+      "name": "Marguerita",
+      "additionalCookTime": 0
+    },
+    {
+      "id": 2,
+      "name": "Portuguesa",
+      "additionalCookTime": 5
+    }
+  ],
+  "increments": [
+    {
+      "id": 0,
+      "name": "Extra bacon",
+      "additionalPrice": 3,
+      "additionalCookTime": 0
+    },
+    {
+      "id": 1,
+      "name": "Sem cebola",
+      "additionalPrice": 0,
+      "additionalCookTime": 0
+    },
+    {
+      "id": 2,
+      "name": "Borda recheada",
+      "additionalPrice": 5,
+      "additionalCookTime": 5
+    }
+  ],
+  "currentOrder": {}
+}

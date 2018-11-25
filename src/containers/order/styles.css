@@ -1,0 +1,11 @@
+.listItem {
+  cursor: pointer;
+}
+
+.listItem:hover {
+  background-color: #f1f1f1;
+}
+
+.listItemPrice {
+  margin-top: -15px;
+}
