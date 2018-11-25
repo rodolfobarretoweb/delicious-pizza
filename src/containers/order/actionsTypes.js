@@ -1,0 +1,6 @@
+export const FETCH_FLAVORS = 'FETCH_FLAVORS';
+export const FETCH_SIZES = 'FETCH_SIZES';
+export const SELECT_FLAVOR = 'SELECT_FLAVOR';
+export const SELECT_SIZE = 'SELECT_SIZE';
+export const SAVE_ORDER = 'SAVE_ORDER';
+export const FETCH_CURRENT_ORDER = 'FETCH_CURRENT_ORDER';
