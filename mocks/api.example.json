@@ -35,18 +35,5 @@
       "name": "Portuguesa",
       "additionalCookTime": 5
     }
-  ],
-  "currentOrder": {
-    "selectedFlavor": {
-      "id": 0,
-      "name": "Calabresa",
-      "additionalCookTime": 0
-    },
-    "selectedSize": {
-      "id": 0,
-      "name": "Pequena",
-      "cookTime": 15,
-      "price": 20
-    }
-  }
+  ]
 }
