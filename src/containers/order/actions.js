@@ -16,22 +16,6 @@ const saveOrder = async data => {
   await Api.saveOrder(newData);
 };
 
-export const fetchCurrentOrder = () => async dispatch => {
-  const currentOrder = await Api.fetchCurrentOrder();
-
-  if(currentOrder.selectedFlavor) {
-    dispatch({ type: SELECT_FLAVOR, payload: currentOrder.selectedFlavor });
-  }
-
-  if(currentOrder.selectedSize) {
-    dispatch({ type: SELECT_SIZE, payload: currentOrder.selectedSize });
-  }
-
-  if(currentOrder.selectedIncrements) {
-    dispatch({ type: SELECT_INCREMENTS, payload: currentOrder.selectedIncrements });
-  }
-};
-
 export const fetchFlavors = () => async dispatch => {
   const payload = await Api.fetchFlavors();
   dispatch({ type: FETCH_FLAVORS, payload });
