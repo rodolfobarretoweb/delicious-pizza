@@ -9,8 +9,7 @@ import {
   ListGroupItemText,
   Card,
   CardBody,
-  CardTitle,
-  Alert
+  CardTitle
 } from 'reactstrap';
 import { fetchSizes, selectSize } from '../actions';
 import { formatCurrency } from '../../../utils/currency';
@@ -23,7 +22,7 @@ class View extends PureComponent {
 
   onSelect = size => () => {
     this.props.selectSize(size);
-    this.props.history.push('/order/increment');
+    this.props.history.push('/order/flavor');
   }
 
   renderItems() {
@@ -44,15 +43,9 @@ class View extends PureComponent {
   }
 
   render() {
-    const { selectedFlavor } = this.props;
-
     return (
       <Card>
         <CardBody>
-          <Alert color="dark">
-            {i18next.t('order.size.selectedFlavor', { value: selectedFlavor.name })}
-          </Alert>
-
           <CardTitle>{i18next.t('order.size.title')}</CardTitle>
           <ListGroup>{this.renderItems()}</ListGroup>
         </CardBody>
@@ -62,8 +55,7 @@ class View extends PureComponent {
 }
 
 const mapStateToProps = state => ({
-  sizes: state.order.sizes,
-  selectedFlavor: state.order.selectedFlavor
+  sizes: state.order.sizes
 });
 
 export default withRouter(

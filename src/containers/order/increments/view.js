@@ -17,8 +17,8 @@ class View extends PureComponent {
   onSubmit = values => {
     const { history } = this.props;
 
-    if(values.length) {
-      this.props.selectIncrements(values);
+    if(values.choices && values.choices.length) {
+      this.props.selectIncrements(values.choices);
       history.push('/order/resume');
     } else {
       history.push('/order/resume');
