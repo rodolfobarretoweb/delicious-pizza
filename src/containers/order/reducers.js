@@ -48,7 +48,7 @@ function selectSizeReducer(state = {}, action = {}) {
   return state;
 }
 
-function selectIncrementsReducer(state = {}, action = {}) {
+function selectIncrementsReducer(state = [], action = {}) {
   if(action.type === SELECT_INCREMENTS) {
     return action.payload;
   }
