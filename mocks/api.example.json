@@ -35,5 +35,25 @@
       "name": "Portuguesa",
       "additionalCookTime": 5
     }
+  ],
+  "increments": [
+    {
+      "id": 0,
+      "name": "Extra bacon",
+      "additionalPrice": 3,
+      "additionalCookTime": 0
+    },
+    {
+      "id": 1,
+      "name": "Sem cebola",
+      "additionalPrice": 0,
+      "additionalCookTime": 0
+    },
+    {
+      "id": 2,
+      "name": "Borda recheada",
+      "additionalPrice": 5,
+      "additionalCookTime": 5
+    }
   ]
 }

@@ -13,16 +13,22 @@ class Api {
     );
   }
 
+  static fetchIncrements() {
+    return fetch(`${Api.BASE_API}/increments`).then(
+      resolve => resolve.json()
+    );
+  }
+
   static saveOrder(data) {
-    return fetch(`${Api.BASE_API}/currentOrder`, {
+    return fetch(`${Api.BASE_API}/orders`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json; charset=utf-8' },
       body: JSON.stringify(data)
     }).then(resolve => resolve.json());
   }
 
-  static fetchCurrentOrder() {
-    return fetch(`${Api.BASE_API}/currentOrder`).then(
+  static fetchOrders() {
+    return fetch(`${Api.BASE_API}/orders`).then(
       resolve => resolve.json()
     );
   }
