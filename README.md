@@ -6,9 +6,12 @@
     * yarn start
     * yarn run api
 
-# To test
+# To run unitary test
     * yarn test
     * yarn test --coverage
+
+# To run e2e tests
+    * yarn run cypress:open
 
 # If your console start to blink when running the tests
 
